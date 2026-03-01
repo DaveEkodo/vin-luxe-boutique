@@ -22,8 +22,7 @@ const CartDrawer = () => {
     message += `💰 *TOTAL: ${formatPrice(totalPrice)}*\n\n`;
     message += `Merci de confirmer ma commande.`;
 
-    const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
-    window.open(url, "_blank");
+    window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`, "_blank");
     clearCart();
     setIsCartOpen(false);
   };
@@ -32,37 +31,34 @@ const CartDrawer = () => {
     <AnimatePresence>
       {isCartOpen && (
         <>
-          {/* Overlay */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setIsCartOpen(false)}
-            className="fixed inset-0 z-50 bg-background/60 backdrop-blur-sm"
+            className="fixed inset-0 z-50 bg-foreground/20 backdrop-blur-sm"
           />
-
-          {/* Drawer */}
           <motion.div
             initial={{ x: "100%" }}
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={{ type: "spring", damping: 25, stiffness: 200 }}
-            className="fixed right-0 top-0 bottom-0 z-50 w-full max-w-md border-l border-border bg-card flex flex-col"
+            className="fixed right-0 top-0 bottom-0 z-50 w-full max-w-md border-l border-border bg-background flex flex-col"
           >
-            {/* Header */}
-            <div className="flex items-center justify-between border-b border-border p-5">
-              <h2 className="font-display text-xl font-bold text-gold-gradient">Votre Panier</h2>
+            <div className="flex items-center justify-between border-b border-border p-6">
+              <h2 className="font-display text-2xl font-bold">
+                <span className="text-gold-gradient">Votre Panier</span>
+              </h2>
               <button onClick={() => setIsCartOpen(false)} className="text-muted-foreground hover:text-foreground transition-colors">
                 <X size={20} />
               </button>
             </div>
 
-            {/* Items */}
-            <div className="flex-1 overflow-y-auto p-5 space-y-4">
+            <div className="flex-1 overflow-y-auto p-6 space-y-4">
               {items.length === 0 ? (
-                <div className="flex flex-col items-center justify-center h-full text-muted-foreground">
-                  <p className="font-elegant text-lg italic">Votre panier est vide</p>
-                  <p className="font-body text-xs mt-2">Explorez notre collection pour commencer</p>
+                <div className="flex flex-col items-center justify-center h-full text-center">
+                  <p className="font-elegant text-xl italic text-muted-foreground">Votre panier est vide</p>
+                  <p className="font-body text-sm mt-2 text-muted-foreground">Explorez notre collection pour commencer</p>
                 </div>
               ) : (
                 items.map((item) => (
@@ -71,23 +67,22 @@ const CartDrawer = () => {
                     layout
                     initial={{ opacity: 0, x: 20 }}
                     animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: -20 }}
-                    className="flex gap-4 rounded-sm border border-border p-3"
+                    className="flex gap-4 rounded-xl border border-border p-4 bg-card"
                   >
-                    <img src={item.wine.image} alt={item.wine.name} className="h-20 w-16 rounded-sm object-cover" />
+                    <img src={item.wine.image} alt={item.wine.name} className="h-24 w-18 rounded-lg object-cover" />
                     <div className="flex-1 min-w-0">
-                      <h4 className="font-display text-sm font-semibold text-foreground truncate">{item.wine.name}</h4>
-                      <p className="font-body text-[10px] text-muted-foreground uppercase tracking-wider">{item.wine.category}</p>
-                      <p className="font-body text-sm text-primary font-semibold mt-1">{formatPrice(item.wine.price)}</p>
-                      <div className="flex items-center gap-2 mt-2">
-                        <button onClick={() => updateQuantity(item.wine.id, item.quantity - 1)} className="h-7 w-7 flex items-center justify-center rounded-sm border border-border text-muted-foreground hover:border-primary hover:text-primary transition-colors">
-                          <Minus size={12} />
+                      <h4 className="font-display text-base font-semibold text-foreground truncate">{item.wine.name}</h4>
+                      <p className="font-body text-[10px] text-muted-foreground uppercase tracking-widest">{item.wine.category} · {item.wine.year}</p>
+                      <p className="font-display text-sm text-accent font-semibold mt-1">{formatPrice(item.wine.price)}</p>
+                      <div className="flex items-center gap-3 mt-3">
+                        <button onClick={() => updateQuantity(item.wine.id, item.quantity - 1)} className="h-8 w-8 flex items-center justify-center rounded-lg border border-border text-muted-foreground hover:border-accent hover:text-accent transition-colors">
+                          <Minus size={14} />
                         </button>
-                        <span className="font-body text-sm w-6 text-center">{item.quantity}</span>
-                        <button onClick={() => updateQuantity(item.wine.id, item.quantity + 1)} className="h-7 w-7 flex items-center justify-center rounded-sm border border-border text-muted-foreground hover:border-primary hover:text-primary transition-colors">
-                          <Plus size={12} />
+                        <span className="font-body text-sm font-semibold w-6 text-center">{item.quantity}</span>
+                        <button onClick={() => updateQuantity(item.wine.id, item.quantity + 1)} className="h-8 w-8 flex items-center justify-center rounded-lg border border-border text-muted-foreground hover:border-accent hover:text-accent transition-colors">
+                          <Plus size={14} />
                         </button>
-                        <button onClick={() => removeFromCart(item.wine.id)} className="ml-auto h-7 w-7 flex items-center justify-center rounded-sm text-muted-foreground hover:text-destructive transition-colors">
+                        <button onClick={() => removeFromCart(item.wine.id)} className="ml-auto h-8 w-8 flex items-center justify-center rounded-lg text-muted-foreground hover:text-destructive transition-colors">
                           <Trash2 size={14} />
                         </button>
                       </div>
@@ -97,16 +92,15 @@ const CartDrawer = () => {
               )}
             </div>
 
-            {/* Footer */}
             {items.length > 0 && (
-              <div className="border-t border-border p-5 space-y-4">
+              <div className="border-t border-border p-6 space-y-4">
                 <div className="flex justify-between items-center">
-                  <span className="font-body text-sm text-muted-foreground uppercase tracking-wider">Total</span>
+                  <span className="font-body text-sm text-muted-foreground uppercase tracking-widest">Total</span>
                   <span className="font-display text-2xl font-bold text-gold-gradient">{formatPrice(totalPrice)}</span>
                 </div>
                 <button
                   onClick={handleWhatsAppOrder}
-                  className="w-full flex items-center justify-center gap-3 bg-[#25D366] hover:bg-[#20bd5a] text-white py-4 rounded-sm font-body text-sm tracking-[0.1em] uppercase font-semibold transition-colors"
+                  className="w-full flex items-center justify-center gap-3 bg-green-600 hover:bg-green-700 text-white py-4 rounded-xl font-body text-sm tracking-[0.1em] uppercase font-semibold transition-all duration-300 hover:shadow-lg"
                 >
                   <MessageCircle size={20} />
                   Commander via WhatsApp
