@@ -10,20 +10,24 @@ const WineCatalog = () => {
   const filteredWines = activeCategory === "Tous" ? wines : wines.filter((w) => w.category === activeCategory);
 
   return (
-    <section id="catalogue" className="py-24 px-4 bg-secondary/30">
-      <div className="container mx-auto max-w-7xl">
+    <section id="catalogue" className="py-24 px-4 relative overflow-hidden">
+      <div className="absolute top-0 left-0 w-full h-px gradient-line-h" />
+      
+      {/* Background glow */}
+      <div className="absolute top-1/3 right-0 w-96 h-96 rounded-full bg-primary/3 blur-[120px]" />
+
+      <div className="container mx-auto max-w-7xl relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <p className="font-elegant text-base tracking-[0.25em] text-accent uppercase mb-3">Notre Cave</p>
+          <p className="font-body text-xs tracking-[0.3em] text-accent uppercase font-semibold mb-3">NOTRE CAVE</p>
           <h2 className="font-display text-4xl md:text-5xl font-bold mb-4">
-            <span className="text-foreground">La </span>
-            <span className="text-gold-gradient">Collection</span>
+            La <span className="text-gold-gradient">Collection</span>
           </h2>
-          <p className="font-body text-muted-foreground max-w-lg mx-auto">
+          <p className="font-body text-sm text-muted-foreground max-w-lg mx-auto">
             Explorez nos crus d'exception et ajoutez vos favoris au panier.
           </p>
         </motion.div>
@@ -34,10 +38,10 @@ const WineCatalog = () => {
             <button
               key={cat}
               onClick={() => setActiveCategory(cat)}
-              className={`font-body text-xs tracking-[0.15em] uppercase px-6 py-3 rounded-lg border transition-all duration-300 ${
+              className={`font-body text-xs tracking-[0.15em] uppercase px-6 py-3 rounded-full border transition-all duration-300 ${
                 activeCategory === cat
                   ? "border-accent bg-accent text-accent-foreground shadow-wine"
-                  : "border-border text-muted-foreground hover:border-accent/40 hover:text-accent bg-background"
+                  : "border-border text-muted-foreground hover:border-accent/40 hover:text-accent bg-card"
               }`}
             >
               {cat}
@@ -46,7 +50,7 @@ const WineCatalog = () => {
         </div>
 
         {/* Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-7">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {filteredWines.map((wine, i) => (
             <WineCard key={wine.id} wine={wine} index={i} />
           ))}
