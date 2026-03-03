@@ -6,54 +6,53 @@
 
 @layer base {
   :root {
-    --background: 220 20% 7%;
-    --foreground: 0 0% 95%;
+    --background: 30 20% 12%;
+    --foreground: 40 30% 92%;
 
-    --card: 220 18% 10%;
-    --card-foreground: 0 0% 95%;
+    --card: 30 18% 16%;
+    --card-foreground: 40 30% 92%;
 
-    --popover: 220 18% 10%;
-    --popover-foreground: 0 0% 95%;
+    --popover: 30 18% 16%;
+    --popover-foreground: 40 30% 92%;
 
     --primary: 43 85% 55%;
-    --primary-foreground: 220 20% 7%;
+    --primary-foreground: 30 20% 10%;
 
-    --secondary: 220 15% 14%;
-    --secondary-foreground: 0 0% 85%;
+    --secondary: 30 15% 20%;
+    --secondary-foreground: 40 20% 80%;
 
-    --muted: 220 12% 18%;
-    --muted-foreground: 220 10% 55%;
+    --muted: 30 12% 24%;
+    --muted-foreground: 30 15% 55%;
 
-    --accent: 348 75% 45%;
+    --accent: 348 65% 48%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 220 15% 16%;
-    --input: 220 15% 16%;
+    --border: 30 12% 22%;
+    --input: 30 12% 22%;
     --ring: 43 85% 55%;
 
     --radius: 0.75rem;
 
-    --wine-deep: 348 85% 25%;
-    --wine: 348 75% 45%;
-    --wine-light: 348 60% 60%;
+    --wine-deep: 348 70% 28%;
+    --wine: 348 65% 48%;
+    --wine-light: 348 55% 62%;
     --gold: 43 85% 55%;
     --gold-light: 43 90% 70%;
     --gold-dark: 43 70% 40%;
 
-    --glow-wine: 0 0 30px hsl(348 75% 45% / 0.3);
+    --glow-wine: 0 0 30px hsl(348 65% 48% / 0.3);
     --glow-gold: 0 0 30px hsl(43 85% 55% / 0.3);
-    --glow-cyan: 0 0 30px hsl(185 80% 50% / 0.3);
 
-    --sidebar-background: 220 18% 10%;
-    --sidebar-foreground: 0 0% 95%;
+    --sidebar-background: 30 18% 16%;
+    --sidebar-foreground: 40 30% 92%;
     --sidebar-primary: 43 85% 55%;
-    --sidebar-primary-foreground: 220 20% 7%;
-    --sidebar-accent: 220 15% 14%;
-    --sidebar-accent-foreground: 0 0% 85%;
-    --sidebar-border: 220 15% 16%;
+    --sidebar-primary-foreground: 30 20% 10%;
+    --sidebar-accent: 30 15% 20%;
+    --sidebar-accent-foreground: 40 20% 80%;
+    --sidebar-border: 30 12% 22%;
     --sidebar-ring: 43 85% 55%;
   }
 }
@@ -72,19 +71,18 @@
     font-family: 'Playfair Display', serif;
   }
 
-  /* Custom scrollbar */
   ::-webkit-scrollbar {
     width: 6px;
   }
   ::-webkit-scrollbar-track {
-    background: hsl(220 20% 7%);
+    background: hsl(30 20% 12%);
   }
   ::-webkit-scrollbar-thumb {
-    background: hsl(220 15% 20%);
+    background: hsl(30 15% 25%);
     border-radius: 3px;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: hsl(348 75% 45%);
+    background: hsl(348 65% 48%);
   }
 }
 
@@ -107,7 +105,7 @@
   }
 
   .text-wine-gradient {
-    background: linear-gradient(135deg, hsl(348 60% 60%), hsl(348 75% 45%), hsl(348 85% 25%));
+    background: linear-gradient(135deg, hsl(348 55% 62%), hsl(348 65% 48%), hsl(348 70% 28%));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -118,7 +116,7 @@
   }
 
   .bg-wine-gradient {
-    background: linear-gradient(135deg, hsl(348 60% 60%), hsl(348 75% 45%), hsl(348 85% 25%));
+    background: linear-gradient(135deg, hsl(348 55% 62%), hsl(348 65% 48%), hsl(348 70% 28%));
   }
 
   .shadow-gold {
@@ -126,14 +124,13 @@
   }
 
   .shadow-wine {
-    box-shadow: 0 0 30px -8px hsl(348 75% 45% / 0.3);
+    box-shadow: 0 0 30px -8px hsl(348 65% 48% / 0.3);
   }
 
-  /* Glowing card border like ZTS */
   .glow-card {
     position: relative;
-    background: hsl(220 18% 10%);
-    border: 1px solid hsl(220 15% 18%);
+    background: hsl(30 18% 16%);
+    border: 1px solid hsl(30 12% 24%);
     border-radius: var(--radius);
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
@@ -143,7 +140,7 @@
     inset: -1px;
     border-radius: inherit;
     padding: 1px;
-    background: linear-gradient(135deg, hsl(348 75% 45% / 0), hsl(348 75% 45% / 0), hsl(43 85% 55% / 0));
+    background: linear-gradient(135deg, hsl(348 65% 48% / 0), hsl(348 65% 48% / 0), hsl(43 85% 55% / 0));
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
@@ -151,14 +148,13 @@
     pointer-events: none;
   }
   .glow-card:hover::before {
-    background: linear-gradient(135deg, hsl(348 75% 45% / 0.6), hsl(43 85% 55% / 0.3), hsl(348 75% 45% / 0.6));
+    background: linear-gradient(135deg, hsl(348 65% 48% / 0.6), hsl(43 85% 55% / 0.3), hsl(348 65% 48% / 0.6));
   }
   .glow-card:hover {
-    border-color: hsl(348 75% 45% / 0.3);
-    box-shadow: 0 0 40px -10px hsl(348 75% 45% / 0.15), inset 0 1px 0 hsl(348 75% 45% / 0.1);
+    border-color: hsl(348 65% 48% / 0.3);
+    box-shadow: 0 0 40px -10px hsl(348 65% 48% / 0.15), inset 0 1px 0 hsl(348 65% 48% / 0.1);
   }
 
-  /* Wine pour animation */
   @keyframes wine-fill {
     0% { height: 0%; }
     100% { height: 70%; }
@@ -197,13 +193,11 @@
     animation: pulse-glow 3s ease-in-out infinite;
   }
 
-  /* Top-to-bottom gradient line like ZTS */
   .gradient-line-h {
     height: 2px;
-    background: linear-gradient(90deg, transparent, hsl(348 75% 45%), hsl(43 85% 55%), hsl(348 75% 45%), transparent);
+    background: linear-gradient(90deg, transparent, hsl(348 65% 48%), hsl(43 85% 55%), hsl(348 65% 48%), transparent);
   }
 
-  /* Wine glass hover effect */
   .wine-card-reveal {
     position: relative;
     overflow: hidden;
@@ -215,7 +209,7 @@
     left: 0;
     right: 0;
     height: 0;
-    background: linear-gradient(to top, hsl(348 75% 45% / 0.12), transparent);
+    background: linear-gradient(to top, hsl(348 65% 48% / 0.12), transparent);
     transition: height 0.6s cubic-bezier(0.4, 0, 0.2, 1);
   }
   .wine-card-reveal:hover::after {
@@ -232,7 +226,7 @@
     content: '';
     flex: 1;
     height: 1px;
-    background: linear-gradient(90deg, transparent, hsl(348 75% 45% / 0.4), transparent);
+    background: linear-gradient(90deg, transparent, hsl(348 65% 48% / 0.4), transparent);
   }
 
   .story-link > * {
