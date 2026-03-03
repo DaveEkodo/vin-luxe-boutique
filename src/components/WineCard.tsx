@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
-import { Plus } from "lucide-react";
+import { Plus, ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 import { Wine } from "@/data/wines";
 import { useCart } from "@/context/CartContext";
 import { toast } from "sonner";
@@ -63,6 +64,15 @@ const WineCard = ({ wine, index }: WineCardProps) => {
         <p className="font-body text-xs text-muted-foreground leading-relaxed mb-4 flex-1">
           {wine.description}
         </p>
+        
+        {/* Detail link */}
+        <Link
+          to={`/vin/${wine.id}`}
+          className="inline-flex items-center gap-1.5 font-body text-[11px] tracking-[0.1em] text-accent/70 hover:text-accent transition-colors mb-4 uppercase"
+        >
+          En savoir plus <ArrowRight size={12} />
+        </Link>
+        
         <div className="flex items-center justify-between pt-3 border-t border-border">
           <span className="font-display text-lg font-bold text-gold-gradient">{formatPrice(wine.price)}</span>
           <button
