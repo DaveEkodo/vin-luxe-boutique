@@ -54,6 +54,14 @@
     --sidebar-accent-foreground: 40 20% 80%;
     --sidebar-border: 30 12% 22%;
     --sidebar-ring: 43 85% 55%;
+
+    /* Light section variants */
+    --light-bg: 40 30% 97%;
+    --light-card: 0 0% 100%;
+    --light-card-border: 30 20% 90%;
+    --light-text: 30 20% 15%;
+    --light-text-muted: 30 10% 45%;
+    --light-subtle: 40 25% 94%;
   }
 }
 
