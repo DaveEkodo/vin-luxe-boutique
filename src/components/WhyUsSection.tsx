@@ -1,5 +1,6 @@
-import { motion } from "framer-motion";
+import { motion, useMotionValue, useTransform } from "framer-motion";
 import { ShieldCheck, Gem, Heart, Clock } from "lucide-react";
+import wineService from "@/assets/wine-service.jpg";
 
 const reasons = [
   {
@@ -28,59 +29,115 @@ const reasons = [
     stat: "500+",
     statLabel: "Clients",
     title: "Satisfaction garantie",
-    text: "Des centaines de clients satisfaits nous font confiance pour leurs événements et leurs plaisirs quotidiens.",
+    text: "Des centaines de clients satisfaits nous font confiance pour leurs événements et plaisirs quotidiens.",
   },
 ];
 
 const WhyUsSection = () => {
   return (
-    <section id="pourquoi" className="py-24 px-4 relative overflow-hidden">
+    <section id="pourquoi" className="py-28 px-4 relative overflow-hidden bg-background">
+      {/* Top separator */}
       <div className="absolute top-0 left-0 w-full h-px gradient-line-h" />
 
-      {/* Background */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-primary/3 blur-[150px]" />
+      {/* Background accents */}
+      <div className="absolute top-20 right-0 w-[500px] h-[500px] rounded-full blur-[180px] opacity-20" style={{ background: "hsl(348 65% 48% / 0.2)" }} />
+      <div className="absolute bottom-20 left-0 w-[400px] h-[400px] rounded-full blur-[150px] opacity-15" style={{ background: "hsl(43 85% 55% / 0.15)" }} />
 
       <div className="container mx-auto max-w-6xl relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <p className="font-body text-xs tracking-[0.3em] text-accent uppercase font-semibold mb-3">POURQUOI NOUS CHOISIR</p>
-          <h2 className="font-display text-4xl md:text-5xl font-bold mb-4">
-            La confiance méritée par{" "}
-            <span className="text-wine-gradient">l'excellence</span>
-          </h2>
-          <p className="font-body text-sm text-muted-foreground max-w-lg mx-auto">
-            Nous nous engageons à fournir des vins de qualité supérieure, avec une attention particulière portée à votre satisfaction.
-          </p>
-        </motion.div>
+        {/* Two-column layout: image + content */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          {/* Left: Image */}
+          <motion.div
+            initial={{ opacity: 0, x: -40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+            className="relative"
+          >
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+              <img
+                src={wineService}
+                alt="Service vinicole ANRI & CO"
+                className="w-full h-[500px] object-cover"
+              />
+              {/* Overlay gradient */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {reasons.map((reason, i) => (
+              {/* Floating stat card */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.5 }}
+                className="absolute bottom-6 left-6 right-6 backdrop-blur-xl rounded-xl p-5 border border-white/10"
+                style={{ background: "hsl(30 15% 15% / 0.8)" }}
+              >
+                <div className="flex items-center justify-between">
+                  {reasons.map((r, i) => (
+                    <div key={r.stat} className="text-center">
+                      <p className="font-display text-2xl font-bold text-gold-gradient">{r.stat}</p>
+                      <p className="font-body text-[10px] text-white/60 uppercase tracking-wider">{r.statLabel}</p>
+                    </div>
+                  ))}
+                </div>
+              </motion.div>
+            </div>
+
+            {/* Decorative frame */}
+            <div className="absolute -top-4 -left-4 w-24 h-24 border-t-2 border-l-2 rounded-tl-2xl" style={{ borderColor: "hsl(348 65% 48% / 0.4)" }} />
+            <div className="absolute -bottom-4 -right-4 w-24 h-24 border-b-2 border-r-2 rounded-br-2xl" style={{ borderColor: "hsl(43 85% 55% / 0.4)" }} />
+          </motion.div>
+
+          {/* Right: Content */}
+          <motion.div
+            initial={{ opacity: 0, x: 40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+          >
             <motion.div
-              key={reason.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ scaleX: 0 }}
+              whileInView={{ scaleX: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="glow-card group p-6 rounded-xl text-center"
-            >
-              {/* Stat badge */}
-              <div className="inline-flex items-baseline gap-1 mb-5 px-3 py-1 rounded-full border border-border bg-secondary">
-                <span className="font-display text-lg font-bold text-wine-gradient">{reason.stat}</span>
-                <span className="font-body text-[10px] text-muted-foreground">{reason.statLabel}</span>
-              </div>
+              className="w-12 h-1 mb-6 rounded-full bg-wine-gradient origin-left"
+            />
+            <p className="font-body text-xs tracking-[0.3em] text-accent uppercase font-semibold mb-4">
+              POURQUOI NOUS CHOISIR
+            </p>
+            <h2 className="font-display text-4xl md:text-5xl font-bold mb-6 leading-tight">
+              La confiance méritée par{" "}
+              <span className="text-wine-gradient">l'excellence</span>
+            </h2>
+            <p className="font-body text-sm text-muted-foreground leading-relaxed mb-10 max-w-md">
+              Nous nous engageons à fournir des vins de qualité supérieure, avec une attention particulière portée à votre satisfaction et à l'authenticité de chaque bouteille.
+            </p>
 
-              <div className="flex h-14 w-14 mx-auto items-center justify-center rounded-xl bg-accent/10 text-accent mb-4 transition-all duration-300 group-hover:bg-accent group-hover:text-accent-foreground group-hover:scale-110">
-                <reason.icon size={24} />
-              </div>
-
-              <h3 className="font-display text-base font-bold text-foreground mb-2">{reason.title}</h3>
-              <p className="font-body text-xs text-muted-foreground leading-relaxed">{reason.text}</p>
-            </motion.div>
-          ))}
+            {/* Reasons list */}
+            <div className="space-y-6">
+              {reasons.map((reason, i) => (
+                <motion.div
+                  key={reason.title}
+                  initial={{ opacity: 0, x: 20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: i * 0.1 }}
+                  className="group flex gap-5 items-start p-4 rounded-xl transition-all duration-300 hover:bg-secondary/50"
+                >
+                  <div className="flex-shrink-0 flex h-12 w-12 items-center justify-center rounded-xl bg-accent/10 text-accent transition-all duration-300 group-hover:bg-accent group-hover:text-accent-foreground group-hover:scale-110">
+                    <reason.icon size={22} />
+                  </div>
+                  <div>
+                    <h3 className="font-display text-base font-bold text-foreground mb-1 group-hover:text-accent transition-colors duration-300">
+                      {reason.title}
+                    </h3>
+                    <p className="font-body text-xs text-muted-foreground leading-relaxed">
+                      {reason.text}
+                    </p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
         </div>
       </div>
     </section>
