@@ -35,13 +35,13 @@ const reasons = [
 
 const WhyUsSection = () => {
   return (
-    <section id="pourquoi" className="py-28 px-4 relative overflow-hidden bg-background">
+    <section id="pourquoi" className="py-28 px-4 relative overflow-hidden" style={{ background: "hsl(40 30% 97%)" }}>
       {/* Top separator */}
-      <div className="absolute top-0 left-0 w-full h-px gradient-line-h" />
+      <div className="absolute top-0 left-0 w-full h-px" style={{ background: "linear-gradient(90deg, transparent, hsl(43 85% 55% / 0.3), transparent)" }} />
 
-      {/* Background accents */}
-      <div className="absolute top-20 right-0 w-[500px] h-[500px] rounded-full blur-[180px] opacity-20" style={{ background: "hsl(348 65% 48% / 0.2)" }} />
-      <div className="absolute bottom-20 left-0 w-[400px] h-[400px] rounded-full blur-[150px] opacity-15" style={{ background: "hsl(43 85% 55% / 0.15)" }} />
+      {/* Subtle background accents for white */}
+      <div className="absolute top-20 right-0 w-[500px] h-[500px] rounded-full blur-[180px] opacity-10" style={{ background: "hsl(348 65% 48% / 0.15)" }} />
+      <div className="absolute bottom-20 left-0 w-[400px] h-[400px] rounded-full blur-[150px] opacity-10" style={{ background: "hsl(43 85% 55% / 0.1)" }} />
 
       <div className="container mx-auto max-w-6xl relative z-10">
         {/* Two-column layout: image + content */}
@@ -101,14 +101,14 @@ const WhyUsSection = () => {
               viewport={{ once: true }}
               className="w-12 h-1 mb-6 rounded-full bg-wine-gradient origin-left"
             />
-            <p className="font-body text-xs tracking-[0.3em] text-accent uppercase font-semibold mb-4">
+            <p className="font-body text-xs tracking-[0.3em] uppercase font-semibold mb-4" style={{ color: "hsl(348 65% 48%)" }}>
               POURQUOI NOUS CHOISIR
             </p>
-            <h2 className="font-display text-4xl md:text-5xl font-bold mb-6 leading-tight">
+            <h2 className="font-display text-4xl md:text-5xl font-bold mb-6 leading-tight" style={{ color: "hsl(30 15% 15%)" }}>
               La confiance méritée par{" "}
               <span className="text-wine-gradient">l'excellence</span>
             </h2>
-            <p className="font-body text-sm text-muted-foreground leading-relaxed mb-10 max-w-md">
+            <p className="font-body text-sm leading-relaxed mb-10 max-w-md" style={{ color: "hsl(30 10% 40%)" }}>
               Nous nous engageons à fournir des vins de qualité supérieure, avec une attention particulière portée à votre satisfaction et à l'authenticité de chaque bouteille.
             </p>
 
@@ -121,16 +121,17 @@ const WhyUsSection = () => {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: i * 0.1 }}
-                  className="group flex gap-5 items-start p-4 rounded-xl transition-all duration-300 hover:bg-secondary/50"
+                  className="group flex gap-5 items-start p-4 rounded-xl transition-all duration-300" style={{ background: "transparent" }}
+                  whileHover={{ backgroundColor: "hsl(40 30% 93%)" }}
                 >
-                  <div className="flex-shrink-0 flex h-12 w-12 items-center justify-center rounded-xl bg-accent/10 text-accent transition-all duration-300 group-hover:bg-accent group-hover:text-accent-foreground group-hover:scale-110">
+                  <div className="flex-shrink-0 flex h-12 w-12 items-center justify-center rounded-xl transition-all duration-300 group-hover:scale-110" style={{ background: "hsl(348 65% 48% / 0.1)", color: "hsl(348 65% 48%)" }}>
                     <reason.icon size={22} />
                   </div>
                   <div>
-                    <h3 className="font-display text-base font-bold text-foreground mb-1 group-hover:text-accent transition-colors duration-300">
+                    <h3 className="font-display text-base font-bold mb-1 transition-colors duration-300" style={{ color: "hsl(30 15% 15%)" }}>
                       {reason.title}
                     </h3>
-                    <p className="font-body text-xs text-muted-foreground leading-relaxed">
+                    <p className="font-body text-xs leading-relaxed" style={{ color: "hsl(30 10% 45%)" }}>
                       {reason.text}
                     </p>
                   </div>
