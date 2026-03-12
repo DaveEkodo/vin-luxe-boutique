@@ -13,6 +13,11 @@ const WineDetail = () => {
   const { id } = useParams();
   const wine = wines.find((w) => w.id === id);
   const { addToCart } = useCart();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [id]);
 
   if (!wine) {
     return (
