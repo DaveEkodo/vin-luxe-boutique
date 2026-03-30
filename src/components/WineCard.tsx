@@ -8,9 +8,10 @@ import { toast } from "sonner";
 interface WineCardProps {
   wine: Wine;
   index: number;
+  from?: "home" | "catalogue";
 }
 
-const WineCard = ({ wine, index }: WineCardProps) => {
+const WineCard = ({ wine, index, from = "home" }: WineCardProps) => {
   const { addToCart } = useCart();
 
   const handleAdd = () => {
@@ -68,6 +69,7 @@ const WineCard = ({ wine, index }: WineCardProps) => {
         {/* Detail link */}
         <Link
           to={`/vin/${wine.id}`}
+          state={{ from }}
           className="inline-flex items-center gap-1.5 font-body text-[11px] tracking-[0.1em] text-accent/70 hover:text-accent transition-colors mb-4 uppercase"
         >
           En savoir plus <ArrowRight size={12} />

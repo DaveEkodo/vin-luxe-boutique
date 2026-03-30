@@ -2,17 +2,15 @@ import { useState, useEffect } from "react";
 import { ShoppingCart, Facebook, Menu, X } from "lucide-react";
 import { useCart } from "@/context/CartContext";
 import { motion, AnimatePresence } from "framer-motion";
+import { Link } from "react-router-dom";
 import logo from "@/assets/logo.jpeg";
 
 const FACEBOOK_URL = "https://www.facebook.com/share/1AzwoxtcCp/?mibextid=wwXIfr";
 
 const navLinks = [
-  { label: "Accueil", href: "#accueil" },
-  { label: "À Propos", href: "#apropos" },
-  { label: "Services", href: "#services" },
-  { label: "Catalogue", href: "#catalogue" },
-  { label: "Pourquoi Nous", href: "#pourquoi" },
-  { label: "Contact", href: "#contact" },
+  { label: "Accueil", href: "/#accueil" },
+  { label: "Catalogue", href: "/catalogue" },
+  { label: "Contact", href: "/#contact" },
 ];
 
 const Navbar = () => {
@@ -39,7 +37,7 @@ const Navbar = () => {
         }`}
       >
         <div className="container mx-auto flex items-center justify-between px-4 py-4">
-          <a href="#accueil" className="flex items-center gap-3 group">
+          <Link to="/" className="flex items-center gap-3 group">
             <img
               src={logo}
               alt="ANRI & CO"
@@ -49,18 +47,18 @@ const Navbar = () => {
               <h1 className="font-display text-lg font-bold text-gold-gradient leading-tight">ANRI & CO</h1>
               <p className="font-body text-[8px] tracking-[0.3em] text-muted-foreground uppercase">Distribution de Vins</p>
             </div>
-          </a>
+          </Link>
 
           {/* Desktop Nav */}
           <div className="hidden lg:flex items-center gap-8">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.href}
-                href={link.href}
+                to={link.href}
                 className="story-link font-body text-[11px] tracking-[0.15em] uppercase text-foreground/60 hover:text-foreground transition-colors duration-300"
               >
                 <span>{link.label}</span>
-              </a>
+              </Link>
             ))}
           </div>
 
@@ -88,12 +86,12 @@ const Navbar = () => {
                 </motion.span>
               )}
             </button>
-            <a
-              href="#contact"
+            <Link
+              to="/#contact"
               className="hidden md:inline-flex items-center gap-2 bg-wine-gradient px-5 py-2.5 rounded-full font-body text-[10px] tracking-[0.15em] uppercase text-accent-foreground font-semibold transition-all duration-300 hover:shadow-wine hover:scale-105"
             >
               Commander
-            </a>
+            </Link>
             <button
               onClick={() => setMobileOpen(true)}
               className="lg:hidden flex h-9 w-9 items-center justify-center rounded-full border border-border text-muted-foreground"
@@ -129,14 +127,14 @@ const Navbar = () => {
               </button>
               <div className="flex flex-col gap-6">
                 {navLinks.map((link) => (
-                  <a
+                  <Link
                     key={link.href}
-                    href={link.href}
+                    to={link.href}
                     onClick={() => setMobileOpen(false)}
                     className="font-display text-lg text-foreground hover:text-accent transition-colors"
                   >
                     {link.label}
-                  </a>
+                  </Link>
                 ))}
               </div>
               <div className="mt-auto flex gap-3">

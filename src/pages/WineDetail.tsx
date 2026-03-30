@@ -1,4 +1,4 @@
-import { useParams, Link, useNavigate } from "react-router-dom";
+import { useParams, Link, useNavigate, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import { motion } from "framer-motion";
 import { ArrowLeft, Plus, MapPin, Calendar, Wine } from "lucide-react";
@@ -14,6 +14,8 @@ const WineDetail = () => {
   const wine = wines.find((w) => w.id === id);
   const { addToCart } = useCart();
   const navigate = useNavigate();
+  const location = useLocation();
+  const from = (location.state as any)?.from || "home";
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -54,10 +56,10 @@ const WineDetail = () => {
             animate={{ opacity: 1, x: 0 }}
           >
             <button
-              onClick={() => navigate("/#catalogue")}
+              onClick={() => navigate(from === "catalogue" ? "/catalogue" : "/#catalogue")}
               className="inline-flex items-center gap-2 font-body text-sm text-muted-foreground hover:text-accent transition-colors mb-8"
             >
-              <ArrowLeft size={16} /> Retour au catalogue
+              <ArrowLeft size={16} /> {from === "catalogue" ? "Retour au catalogue" : "Retour à l'accueil"}
             </button>
           </motion.div>
 
