@@ -12,18 +12,20 @@ const features = [
 const AboutSection = () => {
   return (
     <section id="apropos" className="py-24 px-4 relative overflow-hidden">
-      {/* Background decoration */}
+      {/* Decorative transition from hero */}
+      <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-background/80 to-transparent pointer-events-none" />
       <div className="absolute top-0 left-0 w-full h-px gradient-line-h" />
-      <div className="absolute top-20 right-0 w-80 h-80 rounded-full bg-accent/3 blur-[120px]" />
+      <div className="absolute top-10 left-1/4 w-64 h-64 rounded-full bg-primary/5 blur-[100px] pointer-events-none" />
+      <div className="absolute top-20 right-0 w-80 h-80 rounded-full bg-accent/5 blur-[120px] pointer-events-none" />
 
       <div className="container mx-auto max-w-6xl">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
           {/* Text */}
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
+            initial={{ opacity: 0, x: -30, y: 20 }}
+            whileInView={{ opacity: 1, x: 0, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.9, ease: "easeOut" }}
           >
             <p className="font-body text-xs tracking-[0.3em] text-accent uppercase font-semibold mb-3">QUI SOMMES-NOUS</p>
             <h2 className="font-display text-4xl md:text-5xl font-bold mb-6 leading-tight">
@@ -65,10 +67,10 @@ const AboutSection = () => {
 
           {/* Feature cards */}
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            initial={{ opacity: 0, x: 30, y: 20 }}
+            whileInView={{ opacity: 1, x: 0, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.9, delay: 0.2, ease: "easeOut" }}
             className="grid grid-cols-2 gap-4"
           >
             {features.map((f, i) => (
