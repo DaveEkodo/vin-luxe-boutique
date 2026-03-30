@@ -47,7 +47,7 @@ const Navbar = () => {
               <h1 className="font-display text-lg font-bold text-gold-gradient leading-tight">ANRI & CO</h1>
               <p className="font-body text-[8px] tracking-[0.3em] text-muted-foreground uppercase">Distribution de Vins</p>
             </div>
-          </a>
+          </Link>
 
           {/* Desktop Nav */}
           <div className="hidden lg:flex items-center gap-8">
