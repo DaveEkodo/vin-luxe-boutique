@@ -7,6 +7,7 @@ import { CartProvider } from "@/context/CartContext";
 import ScrollToTop from "./components/ScrollToTop";
 import Index from "./pages/Index";
 import WineDetail from "./pages/WineDetail";
+import CataloguePage from "./pages/CataloguePage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -21,6 +22,7 @@ const App = () => (
           <ScrollToTop />
           <Routes>
             <Route path="/" element={<Index />} />
+            <Route path="/catalogue" element={<CataloguePage />} />
             <Route path="/vin/:id" element={<WineDetail />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
