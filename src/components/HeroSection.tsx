@@ -113,7 +113,7 @@ const HeroSection = () => {
         >
           <Award size={14} className="text-primary" />
           <span className="font-body text-[11px] tracking-[0.15em] uppercase text-primary font-medium">
-            Distributeur de vins d'exception depuis 2014
+            Distributeur de vins d'exception
           </span>
         </motion.div>
 
@@ -255,7 +255,7 @@ const HeroSection = () => {
           {[
             { icon: ShieldCheck, title: "Qualité Certifiée", desc: "Vins sélectionnés avec rigueur auprès des meilleurs domaines" },
             { icon: Truck, title: "Livraison Soignée", desc: "Expédition rapide et emballage premium pour chaque commande" },
-            { icon: Award, title: "Expertise 10+ ans", desc: "Une décennie de passion au service des amateurs de vin" },
+            { icon: Award, title: "Passion & Expertise", desc: "Une équipe passionnée au service des amateurs de vin" },
           ].map((item, i) => (
             <motion.div
               key={item.title}
@@ -288,7 +288,7 @@ const HeroSection = () => {
           {[
             { value: "200+", label: "Références" },
             { value: "500+", label: "Clients satisfaits" },
-            { value: "10+", label: "Années d'expérience" },
+            { value: "100%", label: "Passion & Engagement" },
             { value: "24/7", label: "Support disponible" },
           ].map((stat) => (
             <div key={stat.label} className="text-center">

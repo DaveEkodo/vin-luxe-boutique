@@ -5,7 +5,7 @@ import vineyardImg from "@/assets/vineyard.jpg";
 const features = [
   { icon: Globe, title: "Présence internationale", desc: "Vins importés des meilleurs vignobles du monde entier" },
   { icon: Users, title: "Équipe d'experts", desc: "Sommeliers et œnologues qualifiés à votre service" },
-  { icon: Award, title: "10 ans d'excellence", desc: "Une décennie de passion pour les vins d'exception" },
+  { icon: Award, title: "Passion & Excellence", desc: "Une jeune entreprise animée par la passion des vins d'exception" },
   { icon: Settings, title: "Sur mesure", desc: "Sélection personnalisée selon vos goûts et occasions" },
 ];
 
