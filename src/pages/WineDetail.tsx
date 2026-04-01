@@ -57,7 +57,7 @@ const WineDetail = () => {
           >
             <button
               onClick={() => navigate(from === "catalogue" ? "/catalogue" : "/#catalogue")}
-              className="inline-flex items-center gap-2 font-body text-sm text-muted-foreground hover:text-accent transition-colors mb-8"
+              className="inline-flex items-center gap-2 font-body text-sm transition-colors mb-8" style={{ color: 'hsl(30 10% 45%)' }}
             >
               <ArrowLeft size={16} /> {from === "catalogue" ? "Retour au catalogue" : "Retour à l'accueil"}
             </button>
