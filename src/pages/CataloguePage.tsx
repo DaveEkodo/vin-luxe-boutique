@@ -163,8 +163,9 @@ const CataloguePage = () => {
                     className={`font-body text-xs w-10 h-10 rounded-full border transition-all duration-300 ${
                       currentPage === page
                         ? "border-accent bg-accent text-accent-foreground shadow-wine"
-                        : "border-border text-muted-foreground hover:border-accent/40 hover:text-accent bg-card"
+                        : "hover:border-accent/40 hover:text-accent"
                     }`}
+                    style={currentPage !== page ? { borderColor: 'hsl(30 10% 85%)', color: 'hsl(30 10% 45%)', background: 'hsl(0 0% 97%)' } : {}}
                   >
                     {page}
                   </button>
