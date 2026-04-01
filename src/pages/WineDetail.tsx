@@ -126,7 +126,7 @@ const WineDetail = () => {
                   <Wine size={18} className="text-accent" />
                   <h2 className="font-display text-xl font-bold" style={{ color: 'hsl(30 15% 15%)' }}>L'Histoire de ce vin</h2>
                 </div>
-                <p className="font-body text-sm text-muted-foreground leading-[1.8]">
+                <p className="font-body text-sm leading-[1.8]" style={{ color: 'hsl(30 10% 40%)' }}>
                   {wine.story}
                 </p>
               </div>
