@@ -152,8 +152,8 @@ const WineDetail = () => {
                       <img src={w.image} alt={w.name} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110" />
                     </div>
                     <div className="p-4">
-                      <p className="font-body text-[10px] tracking-[0.2em] text-muted-foreground uppercase mb-1">{w.origin}</p>
-                      <h3 className="font-display text-base font-semibold text-foreground group-hover:text-accent transition-colors">{w.name}</h3>
+                      <p className="font-body text-[10px] tracking-[0.2em] uppercase mb-1" style={{ color: 'hsl(30 10% 50%)' }}>{w.origin}</p>
+                      <h3 className="font-display text-base font-semibold transition-colors" style={{ color: 'hsl(30 15% 15%)' }}>{w.name}</h3>
                       <p className="font-display text-sm font-bold text-gold-gradient mt-2">{formatPrice(w.price)}</p>
                     </div>
                   </Link>

@@ -109,8 +109,9 @@ const CataloguePage = () => {
                   className={`font-body text-xs tracking-[0.15em] uppercase px-6 py-3 rounded-full border transition-all duration-300 ${
                     activeCategory === cat
                       ? "border-accent bg-accent text-accent-foreground shadow-wine"
-                      : "border-border text-muted-foreground hover:border-accent/40 hover:text-accent bg-card"
+                      : "hover:border-accent/40 hover:text-accent"
                   }`}
+                  style={activeCategory !== cat ? { borderColor: 'hsl(30 10% 85%)', color: 'hsl(30 10% 45%)', background: 'hsl(0 0% 97%)' } : {}}
                 >
                   {cat}
                 </button>
