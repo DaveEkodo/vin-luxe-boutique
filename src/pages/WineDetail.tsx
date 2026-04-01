@@ -104,7 +104,7 @@ const WineDetail = () => {
                 {wine.name}
               </h1>
 
-              <p className="font-elegant text-lg text-foreground/70 mb-6 leading-relaxed">
+              <p className="font-elegant text-lg mb-6 leading-relaxed" style={{ color: 'hsl(30 10% 35%)' }}>
                 {wine.description}
               </p>
 
