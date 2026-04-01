@@ -64,10 +64,10 @@ const CataloguePage = () => {
             <p className="font-body text-xs tracking-[0.3em] text-accent uppercase font-semibold mb-3">
               NOTRE CAVE
             </p>
-            <h1 className="font-display text-4xl md:text-5xl font-bold mb-4">
+            <h1 className="font-display text-4xl md:text-5xl font-bold mb-4" style={{ color: 'hsl(30 15% 15%)' }}>
               La <span className="text-gold-gradient">Collection</span>
             </h1>
-            <p className="font-body text-sm text-muted-foreground max-w-lg mx-auto">
+            <p className="font-body text-sm max-w-lg mx-auto" style={{ color: 'hsl(30 10% 45%)' }}>
               Explorez nos crus d'exception et ajoutez vos favoris au panier.
             </p>
           </motion.div>
