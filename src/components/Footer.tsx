@@ -33,29 +33,29 @@ const Footer = () => {
 
           {/* Links */}
           <div>
-            <h4 className="font-display text-sm font-bold mb-4" style={{ color: 'hsl(30 15% 15%)' }}>Liens rapides</h4>
+            <h4 className="font-display text-sm font-bold mb-4 text-foreground">Liens rapides</h4>
             <div className="space-y-2">
               {["Accueil", "À propos", "Services", "Catalogue"].map((l) => (
-                <a key={l} href={`#${l.toLowerCase().replace(/\s/g, '').replace('à', 'a')}`} className="block font-body text-xs hover:text-accent transition-colors" style={{ color: 'hsl(30 10% 40%)' }}>{l}</a>
+                <a key={l} href={`#${l.toLowerCase().replace(/\s/g, '').replace('à', 'a')}`} className="block font-body text-xs text-muted-foreground hover:text-accent transition-colors">{l}</a>
               ))}
             </div>
           </div>
 
           <div>
-            <h4 className="font-display text-sm font-bold mb-4" style={{ color: 'hsl(30 15% 15%)' }}>Nos services</h4>
+            <h4 className="font-display text-sm font-bold mb-4 text-foreground">Nos services</h4>
             <div className="space-y-2">
               {["Distribution de vins", "Dégustation privée", "Événements", "Conseil personnalisé", "Livraison"].map((s) => (
-                <p key={s} className="font-body text-xs" style={{ color: 'hsl(30 10% 40%)' }}>{s}</p>
+                <p key={s} className="font-body text-xs text-muted-foreground">{s}</p>
               ))}
             </div>
           </div>
 
           <div>
-            <h4 className="font-display text-sm font-bold mb-4" style={{ color: 'hsl(30 15% 15%)' }}>Contact</h4>
+            <h4 className="font-display text-sm font-bold mb-4 text-foreground">Contact</h4>
             <div className="space-y-2">
-              <p className="font-body text-xs" style={{ color: 'hsl(30 10% 40%)' }}>📍 Cameroun</p>
-              <p className="font-body text-xs" style={{ color: 'hsl(30 10% 40%)' }}>📞 +237 690 411 527</p>
-              <p className="font-body text-xs" style={{ color: 'hsl(30 10% 40%)' }}>💬 WhatsApp disponible</p>
+              <p className="font-body text-xs text-muted-foreground">📍 Cameroun</p>
+              <p className="font-body text-xs text-muted-foreground">📞 +237 690 411 527</p>
+              <p className="font-body text-xs text-muted-foreground">💬 WhatsApp disponible</p>
             </div>
           </div>
         </div>
