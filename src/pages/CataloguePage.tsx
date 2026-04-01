@@ -15,6 +15,10 @@ const CataloguePage = () => {
   const [activeCategory, setActiveCategory] = useState<string>("Tous");
   const [currentPage, setCurrentPage] = useState(1);
 
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   const filteredWines = useMemo(() => {
     let result = wines;
     if (activeCategory !== "Tous") {
