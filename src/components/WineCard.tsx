@@ -59,7 +59,7 @@ const WineCard = ({ wine, index, from = "home" }: WineCardProps) => {
         <p className="font-body text-[10px] tracking-[0.2em] text-muted-foreground uppercase mb-1.5">
           {wine.origin}
         </p>
-        <h3 className="font-display text-lg font-semibold text-foreground mb-2 group-hover:text-accent transition-colors duration-300">
+        <h3 className="font-display text-lg font-semibold text-foreground mb-2 md:group-hover:text-accent transition-colors duration-300">
           {wine.name}
         </h3>
         <p className="font-body text-xs text-muted-foreground leading-relaxed mb-4 flex-1">
