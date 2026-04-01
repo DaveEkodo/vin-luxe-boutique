@@ -52,6 +52,11 @@ const CataloguePage = () => {
     setCurrentPage(1);
   };
 
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+    scrollToTop();
+  };
+
   return (
     <div className="min-h-screen" style={{ background: 'hsl(0 0% 100%)' }}>
       <Navbar />
