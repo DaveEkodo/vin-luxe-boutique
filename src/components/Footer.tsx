@@ -60,8 +60,8 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="mt-10 pt-6 border-t border-stone-200 text-center">
-          <p className="font-body text-[10px]" style={{ color: 'hsl(30 10% 50%)' }}>
+        <div className="mt-10 pt-6 border-t border-border text-center">
+          <p className="font-body text-[10px] text-muted-foreground">
             © {new Date().getFullYear()} ANRI & CO — Distribution de Vins et Prestation de Services. Tous droits réservés.
           </p>
         </div>

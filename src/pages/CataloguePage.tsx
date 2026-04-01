@@ -161,10 +161,10 @@ const CataloguePage = () => {
           {totalPages > 1 && (
             <div className="flex justify-center items-center gap-2 mt-12">
               <button
-                onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
+                onClick={() => handlePageChange(Math.max(1, currentPage - 1))}
                 disabled={currentPage === 1}
-                className="font-body text-xs tracking-[0.1em] uppercase px-5 py-2.5 rounded-full border hover:border-accent/40 hover:text-accent transition-all duration-300 disabled:opacity-30 disabled:cursor-not-allowed"
-                style={{ borderColor: 'hsl(30 10% 85%)', color: 'hsl(30 10% 45%)', background: 'hsl(0 0% 97%)' }}
+                className="font-body text-xs tracking-[0.1em] uppercase px-5 py-2.5 rounded-full border transition-all duration-300 disabled:opacity-30 disabled:cursor-not-allowed hover:border-accent/40 hover:text-accent"
+                style={{ borderColor: 'hsl(30 15% 30%)', color: 'hsl(30 15% 20%)', background: 'hsl(30 10% 93%)' }}
               >
                 Précédent
               </button>
@@ -173,13 +173,13 @@ const CataloguePage = () => {
                 (page) => (
                   <button
                     key={page}
-                    onClick={() => setCurrentPage(page)}
-                    className={`font-body text-xs w-10 h-10 rounded-full border transition-all duration-300 ${
+                    onClick={() => handlePageChange(page)}
+                    className={`font-body text-xs font-semibold w-10 h-10 rounded-full border transition-all duration-300 ${
                       currentPage === page
                         ? "border-accent bg-accent text-accent-foreground shadow-wine"
                         : "hover:border-accent/40 hover:text-accent"
                     }`}
-                    style={currentPage !== page ? { borderColor: 'hsl(30 10% 85%)', color: 'hsl(30 10% 45%)', background: 'hsl(0 0% 97%)' } : {}}
+                    style={currentPage !== page ? { borderColor: 'hsl(30 15% 30%)', color: 'hsl(30 15% 20%)', background: 'hsl(30 10% 93%)' } : {}}
                   >
                     {page}
                   </button>
@@ -187,12 +187,10 @@ const CataloguePage = () => {
               )}
 
               <button
-                onClick={() =>
-                  setCurrentPage((p) => Math.min(totalPages, p + 1))
-                }
+                onClick={() => handlePageChange(Math.min(totalPages, currentPage + 1))}
                 disabled={currentPage === totalPages}
-                className="font-body text-xs tracking-[0.1em] uppercase px-5 py-2.5 rounded-full border hover:border-accent/40 hover:text-accent transition-all duration-300 disabled:opacity-30 disabled:cursor-not-allowed"
-                style={{ borderColor: 'hsl(30 10% 85%)', color: 'hsl(30 10% 45%)', background: 'hsl(0 0% 97%)' }}
+                className="font-body text-xs tracking-[0.1em] uppercase px-5 py-2.5 rounded-full border transition-all duration-300 disabled:opacity-30 disabled:cursor-not-allowed hover:border-accent/40 hover:text-accent"
+                style={{ borderColor: 'hsl(30 15% 30%)', color: 'hsl(30 15% 20%)', background: 'hsl(30 10% 93%)' }}
               >
                 Suivant
               </button>
