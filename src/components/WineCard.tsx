@@ -79,7 +79,7 @@ const WineCard = ({ wine, index, from = "home" }: WineCardProps) => {
           <span className="font-display text-lg font-bold text-gold-gradient">{formatPrice(wine.price)}</span>
           <button
             onClick={handleAdd}
-            className="flex h-10 w-10 items-center justify-center rounded-full bg-accent text-accent-foreground transition-all duration-300 hover:scale-110 hover:shadow-wine active:scale-95"
+            className="flex h-10 w-10 items-center justify-center rounded-full bg-accent text-accent-foreground transition-all duration-300 md:hover:scale-110 md:hover:shadow-wine active:scale-95"
             aria-label={`Ajouter ${wine.name} au panier`}
           >
             <Plus size={18} />

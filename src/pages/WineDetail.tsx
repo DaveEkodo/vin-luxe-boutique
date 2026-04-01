@@ -44,7 +44,7 @@ const WineDetail = () => {
   const relatedWines = wines.filter((w) => w.category === wine.category && w.id !== wine.id).slice(0, 3);
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen" style={{ background: 'hsl(0 0% 100%)' }}>
       <Navbar />
       <CartDrawer />
 

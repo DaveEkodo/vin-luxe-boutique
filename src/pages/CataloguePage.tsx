@@ -119,7 +119,7 @@ const CataloguePage = () => {
           </motion.div>
 
           {/* Results count */}
-          <p className="font-body text-xs text-muted-foreground mb-6 text-center">
+          <p className="font-body text-xs mb-6 text-center" style={{ color: 'hsl(30 10% 45%)' }}>
             {filteredWines.length} vin{filteredWines.length !== 1 ? "s" : ""} trouvé
             {filteredWines.length !== 1 ? "s" : ""}
           </p>
