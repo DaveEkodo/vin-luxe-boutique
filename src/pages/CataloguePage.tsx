@@ -8,7 +8,7 @@ import Footer from "@/components/Footer";
 import CartDrawer from "@/components/CartDrawer";
 
 const categories = ["Tous", "Rouge", "Blanc", "Rosé", "Champagne"] as const;
-const WINES_PER_PAGE = 8;
+const WINES_PER_PAGE = 6;
 
 const CataloguePage = () => {
   const [search, setSearch] = useState("");
