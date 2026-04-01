@@ -49,7 +49,7 @@ const CataloguePage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen" style={{ background: 'hsl(0 0% 100%)' }}>
       <Navbar />
       <CartDrawer />
 
