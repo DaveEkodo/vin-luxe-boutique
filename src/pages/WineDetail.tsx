@@ -90,11 +90,11 @@ const WineDetail = () => {
               transition={{ duration: 0.6, delay: 0.2 }}
             >
               <div className="flex items-center gap-3 mb-4">
-                <div className="flex items-center gap-1.5 text-muted-foreground">
+                <div className="flex items-center gap-1.5" style={{ color: 'hsl(30 10% 45%)' }}>
                   <MapPin size={14} />
                   <span className="font-body text-xs">{wine.origin}</span>
                 </div>
-                <div className="flex items-center gap-1.5 text-muted-foreground">
+                <div className="flex items-center gap-1.5" style={{ color: 'hsl(30 10% 45%)' }}>
                   <Calendar size={14} />
                   <span className="font-body text-xs">{wine.year}</span>
                 </div>
