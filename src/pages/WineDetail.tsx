@@ -108,7 +108,7 @@ const WineDetail = () => {
                 {wine.description}
               </p>
 
-              <div className="flex items-center gap-6 mb-8 pb-8 border-b border-border">
+              <div className="flex items-center gap-6 mb-8 pb-8" style={{ borderBottomColor: 'hsl(30 10% 85%)', borderBottomWidth: '1px' }}>
                 <span className="font-display text-3xl font-bold text-gold-gradient">
                   {formatPrice(wine.price)}
                 </span>
