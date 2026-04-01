@@ -51,7 +51,7 @@ const WineCatalog = () => {
 
         {/* Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {filteredWines.map((wine, i) => (
+          {filteredWines.slice(0, 6).map((wine, i) => (
             <WineCard key={wine.id} wine={wine} index={i} />
           ))}
         </div>

@@ -44,7 +44,7 @@ const WineDetail = () => {
   const relatedWines = wines.filter((w) => w.category === wine.category && w.id !== wine.id).slice(0, 3);
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen" style={{ background: 'hsl(0 0% 100%)' }}>
       <Navbar />
       <CartDrawer />
 
@@ -57,7 +57,7 @@ const WineDetail = () => {
           >
             <button
               onClick={() => navigate(from === "catalogue" ? "/catalogue" : "/#catalogue")}
-              className="inline-flex items-center gap-2 font-body text-sm text-muted-foreground hover:text-accent transition-colors mb-8"
+              className="inline-flex items-center gap-2 font-body text-sm transition-colors mb-8" style={{ color: 'hsl(30 10% 45%)' }}
             >
               <ArrowLeft size={16} /> {from === "catalogue" ? "Retour au catalogue" : "Retour à l'accueil"}
             </button>
@@ -78,7 +78,7 @@ const WineDetail = () => {
                 className="h-full w-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-card/60 via-transparent to-transparent" />
-              <span className="absolute top-4 left-4 rounded-full bg-card/90 backdrop-blur-sm px-4 py-1.5 font-body text-[10px] tracking-[0.15em] uppercase text-accent font-bold border border-accent/20">
+              <span className="absolute top-4 left-4 rounded-full backdrop-blur-sm px-4 py-1.5 font-body text-[10px] tracking-[0.15em] uppercase text-accent font-bold border border-accent/20" style={{ background: 'hsl(0 0% 97%)' }}>
                 {wine.category}
               </span>
             </motion.div>
@@ -90,25 +90,25 @@ const WineDetail = () => {
               transition={{ duration: 0.6, delay: 0.2 }}
             >
               <div className="flex items-center gap-3 mb-4">
-                <div className="flex items-center gap-1.5 text-muted-foreground">
+                <div className="flex items-center gap-1.5" style={{ color: 'hsl(30 10% 45%)' }}>
                   <MapPin size={14} />
                   <span className="font-body text-xs">{wine.origin}</span>
                 </div>
-                <div className="flex items-center gap-1.5 text-muted-foreground">
+                <div className="flex items-center gap-1.5" style={{ color: 'hsl(30 10% 45%)' }}>
                   <Calendar size={14} />
                   <span className="font-body text-xs">{wine.year}</span>
                 </div>
               </div>
 
-              <h1 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-4">
+              <h1 className="font-display text-4xl md:text-5xl font-bold mb-4" style={{ color: 'hsl(30 15% 15%)' }}>
                 {wine.name}
               </h1>
 
-              <p className="font-elegant text-lg text-foreground/70 mb-6 leading-relaxed">
+              <p className="font-elegant text-lg mb-6 leading-relaxed" style={{ color: 'hsl(30 10% 35%)' }}>
                 {wine.description}
               </p>
 
-              <div className="flex items-center gap-6 mb-8 pb-8 border-b border-border">
+              <div className="flex items-center gap-6 mb-8 pb-8" style={{ borderBottomColor: 'hsl(30 10% 85%)', borderBottomWidth: '1px' }}>
                 <span className="font-display text-3xl font-bold text-gold-gradient">
                   {formatPrice(wine.price)}
                 </span>
@@ -124,9 +124,9 @@ const WineDetail = () => {
               <div>
                 <div className="flex items-center gap-2 mb-4">
                   <Wine size={18} className="text-accent" />
-                  <h2 className="font-display text-xl font-bold text-foreground">L'Histoire de ce vin</h2>
+                  <h2 className="font-display text-xl font-bold" style={{ color: 'hsl(30 15% 15%)' }}>L'Histoire de ce vin</h2>
                 </div>
-                <p className="font-body text-sm text-muted-foreground leading-[1.8]">
+                <p className="font-body text-sm leading-[1.8]" style={{ color: 'hsl(30 10% 40%)' }}>
                   {wine.story}
                 </p>
               </div>
@@ -142,7 +142,7 @@ const WineDetail = () => {
               className="mt-20"
             >
               <div className="gradient-line-h mb-12" />
-              <h2 className="font-display text-2xl font-bold text-foreground mb-8 text-center">
+              <h2 className="font-display text-2xl font-bold mb-8 text-center" style={{ color: 'hsl(30 15% 15%)' }}>
                 Vous aimerez aussi
               </h2>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
@@ -152,8 +152,8 @@ const WineDetail = () => {
                       <img src={w.image} alt={w.name} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110" />
                     </div>
                     <div className="p-4">
-                      <p className="font-body text-[10px] tracking-[0.2em] text-muted-foreground uppercase mb-1">{w.origin}</p>
-                      <h3 className="font-display text-base font-semibold text-foreground group-hover:text-accent transition-colors">{w.name}</h3>
+                      <p className="font-body text-[10px] tracking-[0.2em] uppercase mb-1" style={{ color: 'hsl(30 10% 50%)' }}>{w.origin}</p>
+                      <h3 className="font-display text-base font-semibold transition-colors" style={{ color: 'hsl(30 15% 15%)' }}>{w.name}</h3>
                       <p className="font-display text-sm font-bold text-gold-gradient mt-2">{formatPrice(w.price)}</p>
                     </div>
                   </Link>
