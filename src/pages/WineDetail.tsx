@@ -48,9 +48,25 @@ const WineDetail = () => {
       <Navbar />
       <CartDrawer />
 
-      <main className="pt-24 pb-16">
+      {/* Brown header section */}
+      <div className="bg-background pt-24 pb-6">
         <div className="container mx-auto max-w-5xl px-4">
-          {/* Back button */}
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+          >
+            <button
+              onClick={() => navigate(from === "catalogue" ? "/catalogue" : "/#catalogue")}
+              className="inline-flex items-center gap-2 font-body text-sm text-muted-foreground hover:text-foreground transition-colors"
+            >
+              <ArrowLeft size={16} /> {from === "catalogue" ? "Retour au catalogue" : "Retour à l'accueil"}
+            </button>
+          </motion.div>
+        </div>
+      </div>
+
+      <main className="pb-16 pt-8">
+        <div className="container mx-auto max-w-5xl px-4">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
