@@ -142,7 +142,7 @@ const WineDetail = () => {
               className="mt-20"
             >
               <div className="gradient-line-h mb-12" />
-              <h2 className="font-display text-2xl font-bold text-foreground mb-8 text-center">
+              <h2 className="font-display text-2xl font-bold mb-8 text-center" style={{ color: 'hsl(30 15% 15%)' }}>
                 Vous aimerez aussi
               </h2>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
