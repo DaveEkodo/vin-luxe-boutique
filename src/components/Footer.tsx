@@ -15,7 +15,7 @@ const Footer = () => {
               <img src={logo} alt="ANRI & CO" className="h-10 w-10 rounded-full object-cover" />
               <div>
                 <h3 className="font-display text-lg font-bold text-gold-gradient">ANRI & CO</h3>
-                <p className="font-body text-[8px] tracking-[0.2em] uppercase" style={{ color: 'hsl(30 10% 40%)' }}>Distribution de Vins</p>
+                <p className="font-body text-[8px] tracking-[0.2em] uppercase text-muted-foreground">Distribution de Vins</p>
               </div>
             </div>
             <p className="font-body text-xs leading-relaxed mb-4" style={{ color: 'hsl(30 10% 40%)' }}>
