@@ -18,14 +18,14 @@ const Footer = () => {
                 <p className="font-body text-[8px] tracking-[0.2em] uppercase text-muted-foreground">Distribution de Vins</p>
               </div>
             </div>
-            <p className="font-body text-xs leading-relaxed mb-4" style={{ color: 'hsl(30 10% 40%)' }}>
+            <p className="font-body text-xs leading-relaxed mb-4 text-muted-foreground">
               Votre partenaire vinicole de confiance au Cameroun.
             </p>
             <div className="flex gap-2">
-              <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="flex h-8 w-8 items-center justify-center rounded-full border border-stone-300 hover:border-green-500 hover:text-green-600 transition-all" style={{ color: 'hsl(30 10% 40%)' }}>
+              <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="flex h-8 w-8 items-center justify-center rounded-full border border-border text-muted-foreground hover:border-green-500 hover:text-green-400 transition-all">
                 <MessageCircle size={14} />
               </a>
-              <a href={FACEBOOK_URL} target="_blank" rel="noopener noreferrer" className="flex h-8 w-8 items-center justify-center rounded-full border border-stone-300 hover:border-blue-500 hover:text-blue-600 transition-all" style={{ color: 'hsl(30 10% 40%)' }}>
+              <a href={FACEBOOK_URL} target="_blank" rel="noopener noreferrer" className="flex h-8 w-8 items-center justify-center rounded-full border border-border text-muted-foreground hover:border-blue-500 hover:text-blue-400 transition-all">
                 <Facebook size={14} />
               </a>
             </div>
