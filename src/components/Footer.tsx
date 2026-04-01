@@ -6,7 +6,7 @@ const WHATSAPP_URL = "https://wa.me/237690411527";
 
 const Footer = () => {
   return (
-    <footer className="border-t border-border" style={{ background: 'hsl(40 30% 97%)' }}>
+    <footer className="border-t border-border bg-background">
       <div className="container mx-auto max-w-6xl px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Brand */}
