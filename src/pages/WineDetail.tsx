@@ -100,7 +100,7 @@ const WineDetail = () => {
                 </div>
               </div>
 
-              <h1 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-4">
+              <h1 className="font-display text-4xl md:text-5xl font-bold mb-4" style={{ color: 'hsl(30 15% 15%)' }}>
                 {wine.name}
               </h1>
 
