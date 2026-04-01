@@ -149,7 +149,8 @@ const CataloguePage = () => {
               <button
                 onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
                 disabled={currentPage === 1}
-                className="font-body text-xs tracking-[0.1em] uppercase px-5 py-2.5 rounded-full border border-border text-muted-foreground hover:border-accent/40 hover:text-accent bg-card transition-all duration-300 disabled:opacity-30 disabled:cursor-not-allowed"
+                className="font-body text-xs tracking-[0.1em] uppercase px-5 py-2.5 rounded-full border hover:border-accent/40 hover:text-accent transition-all duration-300 disabled:opacity-30 disabled:cursor-not-allowed"
+                style={{ borderColor: 'hsl(30 10% 85%)', color: 'hsl(30 10% 45%)', background: 'hsl(0 0% 97%)' }}
               >
                 Précédent
               </button>
