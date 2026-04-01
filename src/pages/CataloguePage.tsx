@@ -62,24 +62,29 @@ const CataloguePage = () => {
       <Navbar />
       <CartDrawer />
 
-      <main className="pt-24 pb-16">
+      {/* Brown header section */}
+      <div className="bg-background pt-24 pb-12">
         <div className="container mx-auto max-w-7xl px-4">
-          {/* Header */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-center mb-12"
+            className="text-center"
           >
             <p className="font-body text-xs tracking-[0.3em] text-accent uppercase font-semibold mb-3">
               NOTRE CAVE
             </p>
-            <h1 className="font-display text-4xl md:text-5xl font-bold mb-4" style={{ color: 'hsl(30 15% 15%)' }}>
+            <h1 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-4">
               La <span className="text-gold-gradient">Collection</span>
             </h1>
-            <p className="font-body text-sm max-w-lg mx-auto" style={{ color: 'hsl(30 10% 45%)' }}>
+            <p className="font-body text-sm max-w-lg mx-auto text-muted-foreground">
               Explorez nos crus d'exception et ajoutez vos favoris au panier.
             </p>
           </motion.div>
+        </div>
+      </div>
+
+      <main className="pb-16 pt-10">
+        <div className="container mx-auto max-w-7xl px-4">
 
           {/* Search & Filters */}
           <motion.div
