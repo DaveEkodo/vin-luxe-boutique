@@ -124,7 +124,7 @@ const WineDetail = () => {
               <div>
                 <div className="flex items-center gap-2 mb-4">
                   <Wine size={18} className="text-accent" />
-                  <h2 className="font-display text-xl font-bold text-foreground">L'Histoire de ce vin</h2>
+                  <h2 className="font-display text-xl font-bold" style={{ color: 'hsl(30 15% 15%)' }}>L'Histoire de ce vin</h2>
                 </div>
                 <p className="font-body text-sm text-muted-foreground leading-[1.8]">
                   {wine.story}
