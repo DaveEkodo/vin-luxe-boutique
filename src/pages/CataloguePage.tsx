@@ -15,6 +15,10 @@ const CataloguePage = () => {
   const [activeCategory, setActiveCategory] = useState<string>("Tous");
   const [currentPage, setCurrentPage] = useState(1);
 
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   const filteredWines = useMemo(() => {
     let result = wines;
     if (activeCategory !== "Tous") {
@@ -48,29 +52,39 @@ const CataloguePage = () => {
     setCurrentPage(1);
   };
 
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+    scrollToTop();
+  };
+
   return (
     <div className="min-h-screen" style={{ background: 'hsl(0 0% 100%)' }}>
       <Navbar />
       <CartDrawer />
 
-      <main className="pt-24 pb-16">
+      {/* Brown header section */}
+      <div className="bg-background pt-24 pb-12">
         <div className="container mx-auto max-w-7xl px-4">
-          {/* Header */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-center mb-12"
+            className="text-center"
           >
             <p className="font-body text-xs tracking-[0.3em] text-accent uppercase font-semibold mb-3">
               NOTRE CAVE
             </p>
-            <h1 className="font-display text-4xl md:text-5xl font-bold mb-4" style={{ color: 'hsl(30 15% 15%)' }}>
+            <h1 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-4">
               La <span className="text-gold-gradient">Collection</span>
             </h1>
-            <p className="font-body text-sm max-w-lg mx-auto" style={{ color: 'hsl(30 10% 45%)' }}>
+            <p className="font-body text-sm max-w-lg mx-auto text-muted-foreground">
               Explorez nos crus d'exception et ajoutez vos favoris au panier.
             </p>
           </motion.div>
+        </div>
+      </div>
+
+      <main className="pb-16 pt-10">
+        <div className="container mx-auto max-w-7xl px-4">
 
           {/* Search & Filters */}
           <motion.div
@@ -147,10 +161,10 @@ const CataloguePage = () => {
           {totalPages > 1 && (
             <div className="flex justify-center items-center gap-2 mt-12">
               <button
-                onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
+                onClick={() => handlePageChange(Math.max(1, currentPage - 1))}
                 disabled={currentPage === 1}
-                className="font-body text-xs tracking-[0.1em] uppercase px-5 py-2.5 rounded-full border hover:border-accent/40 hover:text-accent transition-all duration-300 disabled:opacity-30 disabled:cursor-not-allowed"
-                style={{ borderColor: 'hsl(30 10% 85%)', color: 'hsl(30 10% 45%)', background: 'hsl(0 0% 97%)' }}
+                className="font-body text-xs tracking-[0.1em] uppercase px-5 py-2.5 rounded-full border transition-all duration-300 disabled:opacity-30 disabled:cursor-not-allowed hover:border-accent/40 hover:text-accent"
+                style={{ borderColor: 'hsl(30 15% 30%)', color: 'hsl(30 15% 20%)', background: 'hsl(30 10% 93%)' }}
               >
                 Précédent
               </button>
@@ -159,13 +173,13 @@ const CataloguePage = () => {
                 (page) => (
                   <button
                     key={page}
-                    onClick={() => setCurrentPage(page)}
-                    className={`font-body text-xs w-10 h-10 rounded-full border transition-all duration-300 ${
+                    onClick={() => handlePageChange(page)}
+                    className={`font-body text-xs font-semibold w-10 h-10 rounded-full border transition-all duration-300 ${
                       currentPage === page
                         ? "border-accent bg-accent text-accent-foreground shadow-wine"
                         : "hover:border-accent/40 hover:text-accent"
                     }`}
-                    style={currentPage !== page ? { borderColor: 'hsl(30 10% 85%)', color: 'hsl(30 10% 45%)', background: 'hsl(0 0% 97%)' } : {}}
+                    style={currentPage !== page ? { borderColor: 'hsl(30 15% 30%)', color: 'hsl(30 15% 20%)', background: 'hsl(30 10% 93%)' } : {}}
                   >
                     {page}
                   </button>
@@ -173,12 +187,10 @@ const CataloguePage = () => {
               )}
 
               <button
-                onClick={() =>
-                  setCurrentPage((p) => Math.min(totalPages, p + 1))
-                }
+                onClick={() => handlePageChange(Math.min(totalPages, currentPage + 1))}
                 disabled={currentPage === totalPages}
-                className="font-body text-xs tracking-[0.1em] uppercase px-5 py-2.5 rounded-full border hover:border-accent/40 hover:text-accent transition-all duration-300 disabled:opacity-30 disabled:cursor-not-allowed"
-                style={{ borderColor: 'hsl(30 10% 85%)', color: 'hsl(30 10% 45%)', background: 'hsl(0 0% 97%)' }}
+                className="font-body text-xs tracking-[0.1em] uppercase px-5 py-2.5 rounded-full border transition-all duration-300 disabled:opacity-30 disabled:cursor-not-allowed hover:border-accent/40 hover:text-accent"
+                style={{ borderColor: 'hsl(30 15% 30%)', color: 'hsl(30 15% 20%)', background: 'hsl(30 10% 93%)' }}
               >
                 Suivant
               </button>
