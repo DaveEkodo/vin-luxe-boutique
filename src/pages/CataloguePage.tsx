@@ -90,7 +90,9 @@ const CataloguePage = () => {
                 value={search}
                 onChange={(e) => handleSearchChange(e.target.value)}
                 placeholder="Rechercher un vin, une région..."
-                className="w-full pl-11 pr-4 py-3 rounded-full border border-border bg-card font-body text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-accent/50 focus:ring-1 focus:ring-accent/20 transition-all"
+                className="w-full pl-11 pr-4 py-3 rounded-full border font-body text-sm focus:outline-none focus:border-accent/50 focus:ring-1 focus:ring-accent/20 transition-all"
+                style={{ borderColor: 'hsl(30 10% 85%)', background: 'hsl(0 0% 97%)', color: 'hsl(30 15% 15%)', }}
+                
               />
             </div>
 
