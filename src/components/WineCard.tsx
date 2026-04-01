@@ -40,8 +40,8 @@ const WineCard = ({ wine, index, from = "home" }: WineCardProps) => {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-card via-transparent to-transparent opacity-80" />
         
-        {/* Wine pour drip on hover */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[2px] h-0 bg-gradient-to-b from-accent via-accent/80 to-transparent rounded-full transition-all duration-700 group-hover:h-20 opacity-0 group-hover:opacity-60" />
+        {/* Wine pour drip on hover - desktop only */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[2px] h-0 bg-gradient-to-b from-accent via-accent/80 to-transparent rounded-full transition-all duration-700 md:group-hover:h-20 opacity-0 md:group-hover:opacity-60" />
         
         {/* Category badge */}
         <span className="absolute top-3 left-3 rounded-full bg-card/90 backdrop-blur-sm px-3 py-1 font-body text-[10px] tracking-[0.15em] uppercase text-accent font-bold border border-accent/20">
