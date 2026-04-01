@@ -78,7 +78,7 @@ const WineDetail = () => {
                 className="h-full w-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-card/60 via-transparent to-transparent" />
-              <span className="absolute top-4 left-4 rounded-full bg-card/90 backdrop-blur-sm px-4 py-1.5 font-body text-[10px] tracking-[0.15em] uppercase text-accent font-bold border border-accent/20">
+              <span className="absolute top-4 left-4 rounded-full backdrop-blur-sm px-4 py-1.5 font-body text-[10px] tracking-[0.15em] uppercase text-accent font-bold border border-accent/20" style={{ background: 'hsl(0 0% 97%)' }}>
                 {wine.category}
               </span>
             </motion.div>
