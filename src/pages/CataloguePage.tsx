@@ -134,10 +134,10 @@ const CataloguePage = () => {
             </div>
           ) : (
             <div className="text-center py-20">
-              <p className="font-display text-xl text-muted-foreground">
+              <p className="font-display text-xl" style={{ color: 'hsl(30 10% 45%)' }}>
                 Aucun vin trouvé
               </p>
-              <p className="font-body text-sm text-muted-foreground mt-2">
+              <p className="font-body text-sm mt-2" style={{ color: 'hsl(30 10% 55%)' }}>
                 Essayez un autre terme de recherche ou filtre.
               </p>
             </div>
