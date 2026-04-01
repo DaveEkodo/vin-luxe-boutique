@@ -35,7 +35,7 @@ const WineCard = ({ wine, index, from = "home" }: WineCardProps) => {
         <img
           src={wine.image}
           alt={wine.name}
-          className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+          className="h-full w-full object-cover transition-transform duration-700 md:group-hover:scale-110"
           loading="lazy"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-card via-transparent to-transparent opacity-80" />
