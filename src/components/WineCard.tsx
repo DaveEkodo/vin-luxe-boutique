@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { Wine } from "@/data/wines";
 import { useCart } from "@/context/CartContext";
 import { toast } from "sonner";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 interface WineCardProps {
   wine: Wine;
@@ -13,6 +14,7 @@ interface WineCardProps {
 
 const WineCard = ({ wine, index, from = "home" }: WineCardProps) => {
   const { addToCart } = useCart();
+  const isMobile = useIsMobile();
 
   const handleAdd = () => {
     addToCart(wine);
@@ -24,8 +26,8 @@ const WineCard = ({ wine, index, from = "home" }: WineCardProps) => {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial={isMobile ? false : { opacity: 0, y: 30 }}
+      whileInView={isMobile ? undefined : { opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: index * 0.08 }}
       className="glow-card group flex flex-col overflow-hidden rounded-xl"
