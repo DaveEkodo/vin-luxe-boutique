@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { Wine } from "@/data/wines";
 import { useCart } from "@/context/CartContext";
 import { toast } from "sonner";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 interface WineCardProps {
   wine: Wine;
