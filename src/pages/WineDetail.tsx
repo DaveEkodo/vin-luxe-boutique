@@ -8,6 +8,8 @@ import { toast } from "sonner";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import CartDrawer from "@/components/CartDrawer";
+import { useIsMobile } from "@/hooks/use-mobile";
+import { getResponsiveMotionProps } from "@/lib/responsive-motion";
 
 const WineDetail = () => {
   const { id } = useParams();
@@ -16,6 +18,7 @@ const WineDetail = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const from = (location.state as any)?.from || "home";
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -130,7 +133,7 @@ const WineDetail = () => {
                 </span>
                 <button
                   onClick={handleAdd}
-                  className="inline-flex items-center gap-2 bg-wine-gradient px-6 py-3 rounded-full font-body text-sm tracking-[0.1em] uppercase text-accent-foreground font-semibold transition-all duration-300 hover:shadow-wine hover:scale-105"
+                  className="inline-flex items-center gap-2 bg-wine-gradient px-6 py-3 rounded-full font-body text-sm tracking-[0.1em] uppercase text-accent-foreground font-semibold transition-all duration-300 md:hover:shadow-wine md:hover:scale-105"
                 >
                   <Plus size={16} /> Ajouter au panier
                 </button>
@@ -152,9 +155,11 @@ const WineDetail = () => {
           {/* Related wines */}
           {relatedWines.length > 0 && (
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              {...getResponsiveMotionProps(isMobile, {
+                initial: { opacity: 0, y: 30 },
+                whileInView: { opacity: 1, y: 0 },
+                viewport: { once: true },
+              })}
               className="mt-20"
             >
               <div className="gradient-line-h mb-12" />
@@ -165,7 +170,7 @@ const WineDetail = () => {
                 {relatedWines.map((w) => (
                   <Link key={w.id} to={`/vin/${w.id}`} className="glow-card rounded-xl overflow-hidden group">
                     <div className="h-48 overflow-hidden">
-                      <img src={w.image} alt={w.name} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110" />
+                      <img src={w.image} alt={w.name} className="h-full w-full object-cover transition-transform duration-500 md:group-hover:scale-110" />
                     </div>
                     <div className="p-4">
                       <p className="font-body text-[10px] tracking-[0.2em] uppercase mb-1" style={{ color: 'hsl(30 10% 50%)' }}>{w.origin}</p>

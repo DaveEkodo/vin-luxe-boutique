@@ -1,6 +1,8 @@
 import { motion } from "framer-motion";
 import { Globe, Users, Award, Settings } from "lucide-react";
 import vineyardImg from "@/assets/vineyard.jpg";
+import { useIsMobile } from "@/hooks/use-mobile";
+import { getResponsiveMotionProps } from "@/lib/responsive-motion";
 
 const features = [
   { icon: Globe, title: "Présence internationale", desc: "Vins importés des meilleurs vignobles du monde entier" },
@@ -10,6 +12,8 @@ const features = [
 ];
 
 const AboutSection = () => {
+  const isMobile = useIsMobile();
+
   return (
     <section id="apropos" className="py-24 px-4 relative overflow-hidden">
       {/* Decorative transition from hero */}
@@ -22,10 +26,12 @@ const AboutSection = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
           {/* Text */}
           <motion.div
-            initial={{ opacity: 0, x: -30, y: 20 }}
-            whileInView={{ opacity: 1, x: 0, y: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.9, ease: "easeOut" }}
+            {...getResponsiveMotionProps(isMobile, {
+              initial: { opacity: 0, x: -30, y: 20 },
+              whileInView: { opacity: 1, x: 0, y: 0 },
+              viewport: { once: true, margin: "-50px" },
+              transition: { duration: 0.9, ease: "easeOut" },
+            })}
           >
             <p className="font-body text-xs tracking-[0.3em] text-accent uppercase font-semibold mb-3">QUI SOMMES-NOUS</p>
             <h2 className="font-display text-4xl md:text-5xl font-bold mb-6 leading-tight">
@@ -67,22 +73,26 @@ const AboutSection = () => {
 
           {/* Feature cards */}
           <motion.div
-            initial={{ opacity: 0, x: 30, y: 20 }}
-            whileInView={{ opacity: 1, x: 0, y: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.9, delay: 0.2, ease: "easeOut" }}
+            {...getResponsiveMotionProps(isMobile, {
+              initial: { opacity: 0, x: 30, y: 20 },
+              whileInView: { opacity: 1, x: 0, y: 0 },
+              viewport: { once: true, margin: "-50px" },
+              transition: { duration: 0.9, delay: 0.2, ease: "easeOut" },
+            })}
             className="grid grid-cols-2 gap-4"
           >
             {features.map((f, i) => (
               <motion.div
                 key={f.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.3 + i * 0.1 }}
+                {...getResponsiveMotionProps(isMobile, {
+                  initial: { opacity: 0, y: 20 },
+                  whileInView: { opacity: 1, y: 0 },
+                  viewport: { once: true },
+                  transition: { delay: 0.3 + i * 0.1 },
+                })}
                 className="glow-card p-6 rounded-xl group"
               >
-                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-accent/10 text-accent mb-4 transition-all duration-300 group-hover:bg-accent group-hover:text-accent-foreground group-hover:scale-110">
+                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-accent/10 text-accent mb-4 transition-all duration-300 md:group-hover:bg-accent md:group-hover:text-accent-foreground md:group-hover:scale-110">
                   <f.icon size={22} />
                 </div>
                 <h3 className="font-display text-base font-bold text-foreground mb-2">{f.title}</h3>

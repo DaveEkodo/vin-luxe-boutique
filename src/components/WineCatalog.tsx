@@ -2,11 +2,14 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { wines } from "@/data/wines";
 import WineCard from "./WineCard";
+import { useIsMobile } from "@/hooks/use-mobile";
+import { getResponsiveMotionProps } from "@/lib/responsive-motion";
 
 const categories = ["Tous", "Rouge", "Blanc", "Rosé", "Champagne"] as const;
 
 const WineCatalog = () => {
   const [activeCategory, setActiveCategory] = useState<string>("Tous");
+  const isMobile = useIsMobile();
   const filteredWines = activeCategory === "Tous" ? wines : wines.filter((w) => w.category === activeCategory);
 
   return (
@@ -18,9 +21,11 @@ const WineCatalog = () => {
 
       <div className="container mx-auto max-w-7xl relative z-10">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          {...getResponsiveMotionProps(isMobile, {
+            initial: { opacity: 0, y: 20 },
+            whileInView: { opacity: 1, y: 0 },
+            viewport: { once: true },
+          })}
           className="text-center mb-16"
         >
           <p className="font-body text-xs tracking-[0.3em] text-accent uppercase font-semibold mb-3">NOTRE CAVE</p>

@@ -1,6 +1,8 @@
 import { motion, useMotionValue, useTransform } from "framer-motion";
 import { ShieldCheck, Gem, Heart, Clock } from "lucide-react";
 import wineService from "@/assets/wine-service.jpg";
+import { useIsMobile } from "@/hooks/use-mobile";
+import { getResponsiveMotionProps } from "@/lib/responsive-motion";
 
 const reasons = [
   {
@@ -34,6 +36,8 @@ const reasons = [
 ];
 
 const WhyUsSection = () => {
+  const isMobile = useIsMobile();
+
   return (
     <section id="pourquoi" className="py-28 px-4 relative overflow-hidden" style={{ background: "hsl(40 30% 97%)" }}>
       {/* Top separator */}
@@ -48,10 +52,12 @@ const WhyUsSection = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* Left: Image */}
           <motion.div
-            initial={{ opacity: 0, x: -40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
+            {...getResponsiveMotionProps(isMobile, {
+              initial: { opacity: 0, x: -40 },
+              whileInView: { opacity: 1, x: 0 },
+              viewport: { once: true },
+              transition: { duration: 0.7 },
+            })}
             className="relative"
           >
             <div className="relative rounded-2xl overflow-hidden shadow-2xl">
@@ -65,10 +71,12 @@ const WhyUsSection = () => {
 
               {/* Floating stat card */}
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.5 }}
+                {...getResponsiveMotionProps(isMobile, {
+                  initial: { opacity: 0, y: 20 },
+                  whileInView: { opacity: 1, y: 0 },
+                  viewport: { once: true },
+                  transition: { delay: 0.5 },
+                })}
                 className="absolute bottom-6 left-6 right-6 backdrop-blur-xl rounded-xl p-5 border border-white/10"
                 style={{ background: "hsl(30 15% 15% / 0.8)" }}
               >
@@ -90,15 +98,19 @@ const WhyUsSection = () => {
 
           {/* Right: Content */}
           <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
+            {...getResponsiveMotionProps(isMobile, {
+              initial: { opacity: 0, x: 40 },
+              whileInView: { opacity: 1, x: 0 },
+              viewport: { once: true },
+              transition: { duration: 0.7 },
+            })}
           >
             <motion.div
-              initial={{ scaleX: 0 }}
-              whileInView={{ scaleX: 1 }}
-              viewport={{ once: true }}
+              {...getResponsiveMotionProps(isMobile, {
+                initial: { scaleX: 0 },
+                whileInView: { scaleX: 1 },
+                viewport: { once: true },
+              })}
               className="w-12 h-1 mb-6 rounded-full bg-wine-gradient origin-left"
             />
             <p className="font-body text-xs tracking-[0.3em] uppercase font-semibold mb-4" style={{ color: "hsl(348 65% 48%)" }}>
@@ -117,14 +129,16 @@ const WhyUsSection = () => {
               {reasons.map((reason, i) => (
                 <motion.div
                   key={reason.title}
-                  initial={{ opacity: 0, x: 20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: i * 0.1 }}
+                  {...getResponsiveMotionProps(isMobile, {
+                    initial: { opacity: 0, x: 20 },
+                    whileInView: { opacity: 1, x: 0 },
+                    viewport: { once: true },
+                    transition: { duration: 0.4, delay: i * 0.1 },
+                  })}
                   className="group flex gap-5 items-start p-4 rounded-xl transition-all duration-300" style={{ background: "transparent" }}
-                  whileHover={{ backgroundColor: "hsl(40 30% 93%)" }}
+                  whileHover={isMobile ? undefined : { backgroundColor: "hsl(40 30% 93%)" }}
                 >
-                  <div className="flex-shrink-0 flex h-12 w-12 items-center justify-center rounded-xl transition-all duration-300 group-hover:scale-110" style={{ background: "hsl(348 65% 48% / 0.1)", color: "hsl(348 65% 48%)" }}>
+                  <div className="flex-shrink-0 flex h-12 w-12 items-center justify-center rounded-xl transition-all duration-300 md:group-hover:scale-110" style={{ background: "hsl(348 65% 48% / 0.1)", color: "hsl(348 65% 48%)" }}>
                     <reason.icon size={22} />
                   </div>
                   <div>

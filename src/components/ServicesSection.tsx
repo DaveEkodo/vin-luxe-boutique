@@ -1,5 +1,7 @@
 import { motion } from "framer-motion";
 import { Wine, Truck, Star, GlassWater, PartyPopper, Handshake, ArrowRight } from "lucide-react";
+import { useIsMobile } from "@/hooks/use-mobile";
+import { getResponsiveMotionProps } from "@/lib/responsive-motion";
 
 const services = [
   {
@@ -43,6 +45,8 @@ const services = [
 ];
 
 const ServicesSection = () => {
+  const isMobile = useIsMobile();
+
   return (
     <section
       id="services"
@@ -62,15 +66,19 @@ const ServicesSection = () => {
       <div className="container mx-auto max-w-6xl relative z-10">
         {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          {...getResponsiveMotionProps(isMobile, {
+            initial: { opacity: 0, y: 20 },
+            whileInView: { opacity: 1, y: 0 },
+            viewport: { once: true },
+          })}
           className="text-center mb-20"
         >
           <motion.div
-            initial={{ scaleX: 0 }}
-            whileInView={{ scaleX: 1 }}
-            viewport={{ once: true }}
+            {...getResponsiveMotionProps(isMobile, {
+              initial: { scaleX: 0 },
+              whileInView: { scaleX: 1 },
+              viewport: { once: true },
+            })}
             className="w-12 h-1 mx-auto mb-6 rounded-full bg-wine-gradient"
           />
           <p
@@ -99,31 +107,33 @@ const ServicesSection = () => {
           {services.map((service, i) => (
             <motion.div
               key={service.title}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.08 }}
-              className="group relative rounded-2xl p-8 cursor-default transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl"
+              {...getResponsiveMotionProps(isMobile, {
+                initial: { opacity: 0, y: 30 },
+                whileInView: { opacity: 1, y: 0 },
+                viewport: { once: true },
+                transition: { duration: 0.5, delay: i * 0.08 },
+              })}
+              className="group relative rounded-2xl p-8 cursor-default transition-all duration-500 md:hover:-translate-y-2 md:hover:shadow-2xl"
               style={{
                 background: "hsl(var(--light-card))",
                 border: "1px solid hsl(var(--light-card-border))",
               }}
             >
               {/* Hover gradient overlay */}
-              <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" style={{
+              <div className="absolute inset-0 rounded-2xl opacity-0 transition-opacity duration-500 md:group-hover:opacity-100" style={{
                 background: "linear-gradient(135deg, hsl(348 65% 48% / 0.03), hsl(43 85% 55% / 0.05))"
               }} />
 
               {/* Number */}
               <span
-                className="absolute top-6 right-6 font-display text-5xl font-bold opacity-[0.06] group-hover:opacity-[0.12] transition-opacity duration-500"
+                className="absolute top-6 right-6 font-display text-5xl font-bold opacity-[0.06] transition-opacity duration-500 md:group-hover:opacity-[0.12]"
                 style={{ color: "hsl(var(--light-text))" }}
               >
                 0{i + 1}
               </span>
 
               {/* Icon */}
-              <div className={`relative z-10 flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br ${service.color} text-white mb-6 transition-all duration-500 group-hover:scale-110 group-hover:shadow-lg`}>
+              <div className={`relative z-10 flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br ${service.color} text-white mb-6 transition-all duration-500 md:group-hover:scale-110 md:group-hover:shadow-lg`}>
                 <service.icon size={24} />
               </div>
 
@@ -141,7 +151,12 @@ const ServicesSection = () => {
                 {service.description}
               </p>
 
-              <div className="relative z-10 flex items-center gap-2 font-body text-xs font-semibold opacity-0 group-hover:opacity-100 translate-x-0 group-hover:translate-x-1 transition-all duration-300" style={{ color: "hsl(348 65% 48%)" }}>
+              <div
+                className={`relative z-10 flex items-center gap-2 font-body text-xs font-semibold transition-all duration-300 ${
+                  isMobile ? "opacity-100" : "opacity-0 md:group-hover:opacity-100 md:group-hover:translate-x-1"
+                }`}
+                style={{ color: "hsl(348 65% 48%)" }}
+              >
                 Découvrir <ArrowRight size={14} />
               </div>
             </motion.div>
