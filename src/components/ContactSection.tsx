@@ -1,5 +1,7 @@
 import { motion } from "framer-motion";
 import { MessageCircle, Facebook, MapPin, Wine, Grape, Star, Sparkles } from "lucide-react";
+import { useIsMobile } from "@/hooks/use-mobile";
+import { getResponsiveMotionProps } from "@/lib/responsive-motion";
 
 const FACEBOOK_URL = "https://www.facebook.com/share/1AzwoxtcCp/?mibextid=wwXIfr";
 const WHATSAPP_URL = "https://wa.me/237690411527";
@@ -46,35 +48,40 @@ const GlowOrb = ({ className, color }: { className: string; color: string }) => 
 );
 
 const ContactSection = () => {
+  const isMobile = useIsMobile();
+
   return (
     <section id="contact" className="py-28 px-4 relative overflow-hidden bg-background">
       {/* Top separator */}
       <div className="absolute top-0 left-0 w-full h-px gradient-line-h" />
 
       {/* Glow orbs */}
-      <GlowOrb className="w-[500px] h-[500px] top-10 -right-40" color="hsl(348 65% 48% / 0.12)" />
-      <GlowOrb className="w-[400px] h-[400px] bottom-10 -left-32" color="hsl(43 85% 55% / 0.1)" />
-      <GlowOrb className="w-[300px] h-[300px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" color="hsl(348 65% 48% / 0.06)" />
+      {!isMobile && (
+        <>
+          <GlowOrb className="w-[500px] h-[500px] top-10 -right-40" color="hsl(348 65% 48% / 0.12)" />
+          <GlowOrb className="w-[400px] h-[400px] bottom-10 -left-32" color="hsl(43 85% 55% / 0.1)" />
+          <GlowOrb className="w-[300px] h-[300px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" color="hsl(348 65% 48% / 0.06)" />
 
-      {/* Floating elements */}
-      <FloatingElement x={5} y={15} delay={0} duration={7}>
-        <Wine size={20} className="opacity-15" style={{ color: "hsl(348 65% 48%)" }} />
-      </FloatingElement>
-      <FloatingElement x={90} y={20} delay={1.5} duration={8}>
-        <Grape size={18} className="opacity-10" style={{ color: "hsl(43 85% 55%)" }} />
-      </FloatingElement>
-      <FloatingElement x={15} y={75} delay={2} duration={6}>
-        <Star size={14} className="opacity-10" style={{ color: "hsl(43 85% 55%)" }} />
-      </FloatingElement>
-      <FloatingElement x={85} y={70} delay={3} duration={9}>
-        <Sparkles size={16} className="opacity-10" style={{ color: "hsl(348 65% 48%)" }} />
-      </FloatingElement>
-      <FloatingElement x={50} y={10} delay={0.8} duration={7}>
-        <Wine size={16} className="opacity-8" style={{ color: "hsl(43 85% 55%)" }} />
-      </FloatingElement>
-      <FloatingElement x={70} y={85} delay={2.5} duration={8}>
-        <Grape size={14} className="opacity-10" style={{ color: "hsl(348 65% 48%)" }} />
-      </FloatingElement>
+          <FloatingElement x={5} y={15} delay={0} duration={7}>
+            <Wine size={20} className="opacity-15" style={{ color: "hsl(348 65% 48%)" }} />
+          </FloatingElement>
+          <FloatingElement x={90} y={20} delay={1.5} duration={8}>
+            <Grape size={18} className="opacity-10" style={{ color: "hsl(43 85% 55%)" }} />
+          </FloatingElement>
+          <FloatingElement x={15} y={75} delay={2} duration={6}>
+            <Star size={14} className="opacity-10" style={{ color: "hsl(43 85% 55%)" }} />
+          </FloatingElement>
+          <FloatingElement x={85} y={70} delay={3} duration={9}>
+            <Sparkles size={16} className="opacity-10" style={{ color: "hsl(348 65% 48%)" }} />
+          </FloatingElement>
+          <FloatingElement x={50} y={10} delay={0.8} duration={7}>
+            <Wine size={16} className="opacity-8" style={{ color: "hsl(43 85% 55%)" }} />
+          </FloatingElement>
+          <FloatingElement x={70} y={85} delay={2.5} duration={8}>
+            <Grape size={14} className="opacity-10" style={{ color: "hsl(348 65% 48%)" }} />
+          </FloatingElement>
+        </>
+      )}
 
       {/* Subtle grid pattern */}
       <div className="absolute inset-0 opacity-[0.02]" style={{
@@ -85,15 +92,19 @@ const ContactSection = () => {
       <div className="container mx-auto max-w-5xl relative z-10">
         {/* Section header */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          {...getResponsiveMotionProps(isMobile, {
+            initial: { opacity: 0, y: 20 },
+            whileInView: { opacity: 1, y: 0 },
+            viewport: { once: true },
+          })}
           className="text-center mb-16"
         >
           <motion.div
-            initial={{ scaleX: 0 }}
-            whileInView={{ scaleX: 1 }}
-            viewport={{ once: true }}
+            {...getResponsiveMotionProps(isMobile, {
+              initial: { scaleX: 0 },
+              whileInView: { scaleX: 1 },
+              viewport: { once: true },
+            })}
             className="w-12 h-1 mx-auto mb-6 rounded-full bg-wine-gradient"
           />
           <p className="font-body text-xs tracking-[0.3em] text-accent uppercase font-semibold mb-4">
@@ -110,9 +121,11 @@ const ContactSection = () => {
 
         {/* CTA Box */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          {...getResponsiveMotionProps(isMobile, {
+            initial: { opacity: 0, y: 30 },
+            whileInView: { opacity: 1, y: 0 },
+            viewport: { once: true },
+          })}
           className="relative rounded-2xl p-12 text-center mb-16 border border-border/50 overflow-hidden"
           style={{ background: "linear-gradient(135deg, hsl(30 15% 12%), hsl(30 15% 8%))" }}
         >
@@ -120,10 +133,12 @@ const ContactSection = () => {
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[300px] h-[2px] rounded-full" style={{ background: "linear-gradient(90deg, transparent, hsl(43 85% 55% / 0.5), transparent)" }} />
           
           <motion.div
-            initial={{ scale: 0 }}
-            whileInView={{ scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ type: "spring", stiffness: 200, delay: 0.2 }}
+            {...getResponsiveMotionProps(isMobile, {
+              initial: { scale: 0 },
+              whileInView: { scale: 1 },
+              viewport: { once: true },
+              transition: { type: "spring", stiffness: 200, delay: 0.2 },
+            })}
             className="inline-flex h-16 w-16 items-center justify-center rounded-full mb-6"
             style={{ background: "hsl(348 65% 48% / 0.15)" }}
           >
@@ -141,7 +156,7 @@ const ContactSection = () => {
               href={WHATSAPP_URL}
               target="_blank"
               rel="noopener noreferrer"
-              whileHover={{ scale: 1.05, y: -2 }}
+              whileHover={isMobile ? undefined : { scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.98 }}
               className="inline-flex items-center gap-3 bg-wine-gradient px-8 py-4 rounded-full font-body text-sm tracking-[0.1em] uppercase text-accent-foreground font-semibold shadow-lg"
               style={{ boxShadow: "0 8px 30px hsl(348 65% 48% / 0.3)" }}
@@ -153,9 +168,9 @@ const ContactSection = () => {
               href={FACEBOOK_URL}
               target="_blank"
               rel="noopener noreferrer"
-              whileHover={{ scale: 1.05, y: -2 }}
+              whileHover={isMobile ? undefined : { scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.98 }}
-              className="inline-flex items-center gap-3 border border-border/60 px-8 py-4 rounded-full font-body text-sm tracking-[0.1em] uppercase text-foreground/80 font-semibold backdrop-blur-sm transition-colors duration-300 hover:border-primary hover:text-primary"
+              className="inline-flex items-center gap-3 border border-border/60 px-8 py-4 rounded-full font-body text-sm tracking-[0.1em] uppercase text-foreground/80 font-semibold backdrop-blur-sm transition-colors duration-300 md:hover:border-primary md:hover:text-primary"
             >
               <Facebook size={18} />
               Suivre sur Facebook
@@ -199,19 +214,21 @@ const ContactSection = () => {
               <Wrapper
                 key={card.label}
                 {...(card.href ? { href: card.href, target: "_blank", rel: "noopener noreferrer" } : {})}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                whileHover={{ y: -6, scale: 1.02 }}
-                viewport={{ once: true }}
-                transition={{ delay: card.delay }}
+                {...getResponsiveMotionProps(isMobile, {
+                  initial: { opacity: 0, y: 20 },
+                  whileInView: { opacity: 1, y: 0 },
+                  viewport: { once: true },
+                  transition: { delay: card.delay },
+                })}
+                whileHover={isMobile ? undefined : { y: -6, scale: 1.02 }}
                 className="group relative flex flex-col items-center p-8 rounded-2xl text-center cursor-pointer border border-border/30 backdrop-blur-sm overflow-hidden"
                 style={{ background: "hsl(30 15% 10% / 0.5)" }}
               >
                 {/* Hover glow */}
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl" style={{ background: `radial-gradient(circle at center, ${card.bgColor}, transparent 70%)` }} />
+                <div className="absolute inset-0 opacity-0 transition-opacity duration-500 rounded-2xl md:group-hover:opacity-100" style={{ background: `radial-gradient(circle at center, ${card.bgColor}, transparent 70%)` }} />
                 
                 <div
-                  className="relative flex h-14 w-14 items-center justify-center rounded-xl mb-4 transition-all duration-300 group-hover:scale-110"
+                  className="relative flex h-14 w-14 items-center justify-center rounded-xl mb-4 transition-all duration-300 md:group-hover:scale-110"
                   style={{ background: card.bgColor, color: card.color }}
                 >
                   <card.icon size={24} />
